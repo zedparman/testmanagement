@@ -1,5 +1,5 @@
 export const state = () => ({
-    value: 'myvalue'
+    posts: []
 })
 
 export const getters = {
@@ -16,6 +16,10 @@ export const mutations = {
 
 export const actions = {
     updateActionValue({ commit }) {
-        commit('updateValue', payload)
+        axios.get('https://jsonplaceholder.typicode.com/posts').then((response) =>{
+        console.log(response.data)
+            commit('updateValue', response.data)
+    })
+        
     }
 }
