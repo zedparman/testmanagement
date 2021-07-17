@@ -4,23 +4,72 @@ export const state = () => ({
     posts: []
 })
 
-
-export const getters = {}
+// export const getters = {
+//     getterValue: state => {
+//         return state.value
+//     }
+// }
 
 export const mutations = {
-    SET_POSTS(state, posts) {
+    SET_POSTS (state, posts){
         state.posts = posts
-    }
+        }
 }
 
 export const actions = {
-    getPosts({ commit }) {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response => {
-                commit('SET_POSTS', response.data)
+    loadPosts ({commit}) {
+        axios
+        .get('https://jsonplaceholder.typicode.com/posts')
+        .then(data => {
+        console.log(data.data)
+        let posts = data.data
+        commit('SET_POSTS', post)
+        }
+        )
+        .catch(error => {
+        console.log(error)
         })
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const state = () => ({
+//     posts: []
+// })
+
+
+// export const getters = {}
+
+// export const mutations = {
+//     SET_POSTS(state, posts) {
+//         state.posts = posts
+//     }
+// }
+
+// export const actions = {
+//     getPosts({ commit }) {
+//         axios.get('https://jsonplaceholder.typicode.com/posts')
+//             .then(response => {
+//                 commit('SET_POSTS', response.data)
+//         })
+//     }
+// }
 
 
 
